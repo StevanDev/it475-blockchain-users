@@ -1,8 +1,5 @@
 # 🔐 Blockchain sistem za upravljanje korisnicima
 
-> Akademski projekat za predmet **IT475 – Blokčejn tehnologija u zaštiti podataka**  
-> Univerzitet Metropolitan Beograd · Smer: Softversko Inženjerstvo
-
 Sistem koji svaku akciju nad korisnicima (registracija, izmena, brisanje) kriptografski zaključava u sopstveni **SHA-256 blockchain lanac**. Ako neko naknadno promeni podatke zaobilazeći aplikaciju, sistem to odmah detektuje i prijavljuje alarm — kao nepromenljiv revizorski dnevnik.
 
 ---
