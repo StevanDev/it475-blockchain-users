@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blockchain sistem za upravljanje korisnicima</title>
+    <link rel="stylesheet" href="style.css" />
+
+</head>
+<body>
+
+<header>Blockchain Sistem za Upravljanje Korisnicima – IT475</header>
+
+<div class="container">
+    <div>
+        <div class="panel" style="margin-bottom:20px;">
+            <div class="panel-header">Registracija novog korisnika</div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <label>Korisničko ime</label>
+                    <input type="text" id="reg-username" placeholder="npr. jovanovic_petar" />
+                </div>
+                <div class="form-group">
+                    <label>Email adresa</label>
+                    <input type="email" id="reg-email" placeholder="petar@example.com" />
+                </div>
+                <div class="form-group">
+                    <label>Uloga (Role)</label>
+                    <select id="reg-role">
+                        <option value="USER">Korisnik</option>
+                        <option value="MODERATOR">Moderator</option>
+                        <option value="ADMIN">Administrator</option>
+                    </select>
+                </div>
+                <div class="btn-row">
+                    <button class="btn btn-primary" onclick="registerUser()">Registruj korisnika</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header">Lista korisnika (Off-chain skladište)</div>
+            <div class="panel-body">
+                <table id="users-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Korisničko ime</th>
+                            <th>Email</th>
+                            <th>Uloga</th>
+                            <th>Kreirano</th>
+                            <th>Akcije</th>
+                        </tr>
+                    </thead>
+                    <tbody id="users-tbody">
+                        <tr><td colspan="6" style="text-align:center;color:#888;padding:20px;">Nema registrovanih korisnika.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel">
+        <div class="panel-header">Blockchain Logovi &amp; Status</div>
+        <div class="panel-body">
+            <div id="status-container" class="status-box status-ok">
+                Sistem je bezbedan. Integritet podataka je očuvan.
+            </div>
+
+            <div class="btn-row" style="margin-bottom:16px;">
+                <button class="btn btn-info" onclick="fetchStatus()">Osveži status</button>
+                <button class="btn btn-tamper" onclick="simulateTamper()">⚠ Simuliraj napad (Izmeni lanac)</button>
+            </div>
+
+            <div id="blockchain-view" class="blockchain-view"></div>
+        </div>
+    </div>
+
+</div>
+
+<div class="modal-overlay" id="edit-modal">
+    <div class="modal">
+        <h3>Izmena korisnika</h3>
+        <input type="hidden" id="edit-id" />
+        <div class="form-group">
+            <label>Korisničko ime</label>
+            <input type="text" id="edit-username" />
+        </div>
+        <div class="form-group">
+            <label>Email adresa</label>
+            <input type="email" id="edit-email" />
+        </div>
+        <div class="form-group">
+            <label>Uloga</label>
+            <select id="edit-role">
+                <option value="USER">Korisnik</option>
+                <option value="MODERATOR">Moderator</option>
+                <option value="ADMIN">Administrator</option>
+            </select>
+        </div>
+        <div class="modal-actions">
+            <button class="btn btn-primary" onclick="submitEdit()">Sačuvaj izmene</button>
+            <button class="btn" style="background:#999;color:#fff;" onclick="closeModal()">Otkaži</button>
+        </div>
+    </div>
+</div>
+
+<div id="toast"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
